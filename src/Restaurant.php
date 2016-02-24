@@ -83,11 +83,11 @@
             $GLOBALS['DB']->exec("DELETE FROM restaurants;");
         }
 
-        // static function deleteFromCuisine($cuisine_id)
-        // {
-        //     $GLOBALS['DB']->exec("DELETE FROM restaurants WHERE cuisine_id = {$cuisine_id};");
-        // }
-        //
+        function delete()
+            {
+                $GLOBALS['DB']->exec("DELETE FROM restaurants WHERE cuisine_id = {$this->getCuisineId()};");
+            }
+
         // static function find($search_id)
         // {
         //     $found_restaurant = null;
