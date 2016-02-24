@@ -106,9 +106,9 @@
             $GLOBALS['DB']->exec("DELETE FROM restaurants;");
         }
 
-        function delete()
+        static function delete($cuisine_id)
         {
-            $GLOBALS['DB']->exec("DELETE FROM restaurants WHERE cuisine_id = {$this->getCuisineId()};");
+            $GLOBALS['DB']->exec("DELETE FROM restaurants WHERE cuisine_id = {$cuisine_id};");
         }
 
         static function find($search_id)

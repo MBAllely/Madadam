@@ -1,0 +1,19 @@
+<html>
+<head>
+    <title>Restaurant List</title>
+</head>
+<body>
+    <h1>Update {{ restaurant.getName }} Information</h1>
+
+    <form action="/restaurants/{{ restaurant.getId }}/name" method="post">
+      <input name="_method" type="hidden" value="patch">
+
+      <label for="name">Rename your restaurant:</label>
+      <input id="name" name="name" type="text">
+
+      <button type="submit">Update</button>
+    </form>
+
+    <p><a href='/'>Home</a></p>
+</body>
+</html>

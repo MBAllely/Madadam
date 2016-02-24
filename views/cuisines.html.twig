@@ -5,19 +5,6 @@
 <body>
     <h1>{{ cuisine.getName }}</h1>
 
-    {% if restaurants is not empty %}
-        <p>Here are the restaurants:</p>
-        <ul>
-            {% for restaurant in restaurants %}
-                <li>{{ restaurant.getName }} | Phone: {{ restaurant.getPhone }}</li>
-                <li>Price Range: {{ restaurant.getPriceRange }}</li>
-            {% endfor %}
-        </ul>
-        <form action="/delete_restaurants/{{ cuisine.getId }}" method="post">
-            <button type="submit" name="button">Delete restaurants</button>
-        </form>
-    {% endif %}
-
     <h4>Add a restaurant</h4>
 
     <form action='/restaurants' method='post'>
@@ -34,6 +21,26 @@
         </select>
         <button type='submit'>Add restaurant</button>
     </form>
+
+    {% if restaurants is not empty %}
+        <p>Here are the restaurants:</p>
+        <ul>
+            {% for restaurant in restaurants %}
+                <li>
+                    <h3>{{ restaurant.getName }}</h3>
+                    <h4>Price Range: {{ restaurant.getPriceRange }}</h4>
+                    <h4>Phone: {{ restaurant.getPhone }}</h4>
+                    <form action="/restaurants/{{ restaurant.getId }}/edit" method="get">
+                        <button type="submit" name="button">Edit restaurant</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+        <form action="/delete_restaurants/{{ cuisine.getId }}" method="post">
+            <input name="_method" type="hidden" value="delete">
+            <button type="submit" name="button">Delete restaurants</button>
+        </form>
+    {% endif %}
 
     <p><a href='/'>Home</a></p>
 </body>
