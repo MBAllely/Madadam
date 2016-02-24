@@ -49,20 +49,20 @@
             $this->assertEquals(true, is_numeric($result));
         }
 
-        // function test_save()
-        // {
-        //     //Arrange
-        //     $name = "Work stuff";
-        //     $test_Cuisine = new Cuisine($name);
-        //     $test_Cuisine->save();
-        //
-        //     //Act
-        //     $result = Cuisine::getAll();
-        //
-        //     //Assert
-        //     $this->assertEquals($test_Cuisine, $result[0]);
-        // }
-        //
+        function test_save()
+        {
+            //Arrange
+            $name = "Mexican";
+            $test_cuisine = new Cuisine($name);
+            $test_cuisine->save();
+
+            //Act
+            $result = Cuisine::getAll();
+
+            //Assert
+            $this->assertEquals($test_cuisine, $result[0]);
+        }
+
         // function testGetRestaurants()
         // {
         //     //Arrange
@@ -89,24 +89,24 @@
         //     //Assert
         //     $this->assertEquals([$test_restaurant, $test_restaurant2], $result);
         // }
-        //
-        // function test_getAll()
-        // {
-        //     //Arrange
-        //     $name = "Work stuff";
-        //     $name2 = "Home stuff";
-        //     $test_Cuisine = new Cuisine($name);
-        //     $test_Cuisine->save();
-        //     $test_Cuisine2 = new Cuisine($name2);
-        //     $test_Cuisine2->save();
-        //
-        //     //Act
-        //     $result = Cuisine::getAll();
-        //
-        //     //Assert
-        //     $this->assertEquals([$test_Cuisine, $test_Cuisine2], $result);
-        // }
-        //
+
+        function test_getAll()
+        {
+            //Arrange
+            $name = "Mexican";
+            $name2 = "Chinese";
+            $test_cuisine = new Cuisine($name);
+            $test_cuisine->save();
+            $test_cuisine2 = new Cuisine($name2);
+            $test_cuisine2->save();
+
+            //Act
+            $result = Cuisine::getAll();
+
+            //Assert
+            $this->assertEquals([$test_cuisine, $test_cuisine2], $result);
+        }
+
         // function test_deleteAll()
         // {
         //     //Arrange
