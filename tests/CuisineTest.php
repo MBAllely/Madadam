@@ -63,6 +63,23 @@
             $this->assertEquals($test_cuisine, $result[0]);
         }
 
+        function testUpdate()
+        {
+            //Arrange
+            $name = "Mexican";
+            $id = null;
+            $test_cuisine = new Cuisine($name, $id);
+            $test_cuisine->save();
+
+            $new_name = "Puerto Rican";
+
+            //Act
+            $test_cuisine->update($new_name);
+
+            //Assert
+            $this->assertEquals("Puerto Rican", $test_cuisine->getName());
+        }
+
         // function testGetRestaurants()
         // {
         //     //Arrange
