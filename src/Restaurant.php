@@ -74,6 +74,11 @@
             $this->setPhone($new_phone);
         }
 
+        function deleteOneRestaurant()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM restaurants WHERE id = {$this->getId()};");
+        }
+
         function updatePriceRange($new_price_range)
         {
             $GLOBALS['DB']->exec("UPDATE restaurants SET price_range = '{$new_price_range}' WHERE id = {$this->getId()};");
@@ -102,9 +107,9 @@
         }
 
         function delete()
-            {
-                $GLOBALS['DB']->exec("DELETE FROM restaurants WHERE cuisine_id = {$this->getCuisineId()};");
-            }
+        {
+            $GLOBALS['DB']->exec("DELETE FROM restaurants WHERE cuisine_id = {$this->getCuisineId()};");
+        }
 
         static function find($search_id)
         {

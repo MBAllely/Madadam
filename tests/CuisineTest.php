@@ -168,22 +168,22 @@
             $this->assertEquals([], Restaurant::getAll());
         }
 
-        // function test_find()
-        // {
-        //     //Arrange
-        //     $name = "Mexican";
-        //     $name2 = "Chinese";
-        //     $test_Cuisine = new Cuisine($name);
-        //     $test_Cuisine->save();
-        //     $test_Cuisine2 = new Cuisine($name2);
-        //     $test_Cuisine2->save();
-        //
-        //     //Act
-        //     $result = Cuisine::find($test_Cuisine->getId());
-        //
-        //     //Assert
-        //     $this->assertEquals($test_Cuisine, $result);
-        // }
+        function test_find()
+        {
+            //Arrange
+            $name = "Mexican";
+            $name2 = "Chinese";
+            $test_Cuisine = new Cuisine($name);
+            $test_Cuisine->save();
+            $test_Cuisine2 = new Cuisine($name2);
+            $test_Cuisine2->save();
+
+            //Act
+            $result = Cuisine::find($test_Cuisine->getId());
+
+            //Assert
+            $this->assertEquals($test_Cuisine, $result);
+        }
     }
 
 ?>

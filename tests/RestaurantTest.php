@@ -238,6 +238,34 @@
             $this->assertEquals([], Restaurant::getAll());
         }
 
+        function testDeleteOneRestaurant()
+        {
+            //Arrange
+            $name = "Mexican";
+            $id = null;
+            $test_cuisine = new Cuisine($name, $id);
+            $test_cuisine->save();
+
+            $name = "Santeria";
+            $phone = "503-555-5555";
+            $cuisine_id = $test_cuisine->getId();
+            $price_range = "Cheap";
+            $test_restaurant = new Restaurant($name, $phone, $price_range, $id, $cuisine_id);
+            $test_restaurant->save();
+
+            $name2 = "Los Pollos Hermanos";
+            $phone2 = "503-111-1111";
+            $price_range2 = "Average";
+            $test_restaurant2 = new Restaurant($name2, $phone2, $price_range2, $id, $cuisine_id);
+            $test_restaurant2->save();
+
+            //Act
+            $test_restaurant->deleteOneRestaurant();
+
+            //Assert
+            $this->assertEquals([$test_restaurant2], Restaurant::getAll());
+        }
+
         function test_find()
         {
             //Arrange
