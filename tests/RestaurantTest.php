@@ -23,27 +23,28 @@
             Cuisine::deleteAll();
         }
 
-        // function test_getId()
-        // {
-        //     //Arrange
-        //     $name = "Home stuff";
-        //     $id = null;
-        //     $test_cuisine = new Cuisine($name, $id);
-        //     $test_cuisine->save();
-        //
-        //     $description = "Wash the dog";
-        //     $due_date = "2016-02-28";
-        //     $cuisine_id = $test_cuisine->getId();
-        //     $test_restaurant = new Restaurant($description, $due_date, $id, $cuisine_id);
-        //     $test_restaurant->save();
-        //
-        //     //Act
-        //     $result = $test_restaurant->getId();
-        //
-        //     //Assert
-        //     $this->assertEquals(true, is_numeric($result));
-        // }
-        //
+        function test_getId()
+        {
+            //Arrange
+            $name = "Mexican";
+            $id = null;
+            $test_cuisine = new Cuisine($name, $id);
+            $test_cuisine->save();
+
+            $name = "Santeria";
+            $phone = "503-555-5555";
+            $price_range = "Cheap";
+            $cuisine_id = $test_cuisine->getId();
+            $test_restaurant = new Restaurant($name, $phone, $price_range, $id, $cuisine_id);
+            $test_restaurant->save();
+
+            //Act
+            $result = $test_restaurant->getId();
+
+            //Assert
+            $this->assertEquals(true, is_numeric($result));
+        }
+
         // function test_getCuisineId()
         // {
         //     //Arrange
@@ -52,10 +53,10 @@
         //     $test_cuisine = new Cuisine($name, $id);
         //     $test_cuisine->save();
         //
-        //     $description = "Wash the dog";
-        //     $due_date = "2016-02-28";
+        //     $name = "Wash the dog";
+        //     $phone = "503-555-5555";
         //     $cuisine_id = $test_cuisine->getId();
-        //     $test_restaurant = new Restaurant($description, $due_date, $id, $cuisine_id);
+        //     $test_restaurant = new Restaurant($name, $phone, $id, $cuisine_id);
         //     $test_restaurant->save();
         //
         //     //Act
@@ -73,10 +74,10 @@
         //     $test_cuisine = new Cuisine($name, $id);
         //     $test_cuisine->save();
         //
-        //     $description = "Wash the dog";
-        //     $due_date = "2016-02-28";
+        //     $name = "Wash the dog";
+        //     $phone = "503-555-5555";
         //     $cuisine_id = $test_cuisine->getId();
-        //     $test_restaurant = new Restaurant($description, $due_date, $id, $cuisine_id);
+        //     $test_restaurant = new Restaurant($name, $phone, $id, $cuisine_id);
         //
         //     //Act
         //     $test_restaurant->save();
@@ -94,16 +95,16 @@
         //     $test_cuisine = new Cuisine($name, $id);
         //     $test_cuisine->save();
         //
-        //     $description = "Wash the dog";
-        //     $due_date = "2016-02-28";
+        //     $name = "Wash the dog";
+        //     $phone = "503-555-5555";
         //     $cuisine_id = $test_cuisine->getId();
-        //     $test_restaurant = new Restaurant($description, $due_date, $id, $cuisine_id);
+        //     $test_restaurant = new Restaurant($name, $phone, $id, $cuisine_id);
         //     $test_restaurant->save();
         //
         //
-        //     $description2 = "Water the lawn";
-        //     $due_date2 = "2016-02-27";
-        //     $test_restaurant2 = new Restaurant($description2, $due_date2, $id, $cuisine_id);
+        //     $name2 = "Water the lawn";
+        //     $phone2 = "2016-02-27";
+        //     $test_restaurant2 = new Restaurant($name2, $phone2, $id, $cuisine_id);
         //     $test_restaurant2->save();
         //
         //     //Act
@@ -121,15 +122,15 @@
         //     $test_cuisine = new Cuisine($name, $id);
         //     $test_cuisine->save();
         //
-        //     $description = "Wash the dog";
-        //     $due_date = "2016-02-28";
+        //     $name = "Wash the dog";
+        //     $phone = "503-555-5555";
         //     $cuisine_id = $test_cuisine->getId();
-        //     $test_restaurant = new Restaurant($description, $due_date, $id, $cuisine_id);
+        //     $test_restaurant = new Restaurant($name, $phone, $id, $cuisine_id);
         //     $test_restaurant->save();
         //
-        //     $description2 = "Water the lawn";
-        //     $due_date2 = "2016-02-27";
-        //     $test_restaurant2 = new Restaurant($description2, $due_date2, $id, $cuisine_id);
+        //     $name2 = "Water the lawn";
+        //     $phone2 = "2016-02-27";
+        //     $test_restaurant2 = new Restaurant($name2, $phone2, $id, $cuisine_id);
         //     $test_restaurant2->save();
         //
         //     //Act
@@ -153,16 +154,16 @@
         //     $test_Cuisine2 = new Cuisine($name2, $id);
         //     $test_Cuisine2->save();
         //
-        //     $description = "Wash the dog";
-        //     $due_date = "2016-02-28";
+        //     $name = "Wash the dog";
+        //     $phone = "503-555-5555";
         //     $cuisine_id = $test_Cuisine->getId();
-        //     $test_restaurant = new Restaurant($description, $due_date, $id, $cuisine_id);
+        //     $test_restaurant = new Restaurant($name, $phone, $id, $cuisine_id);
         //     $test_restaurant->save();
         //
-        //     $description2 = "Chop the onion";
-        //     $due_date2 = "2016-02-26";
+        //     $name2 = "Chop the onion";
+        //     $phone2 = "2016-02-26";
         //     $cuisine_id2 = $test_Cuisine2->getId();
-        //     $test_restaurant2 = new Restaurant($description2, $due_date2, $id, $cuisine_id2);
+        //     $test_restaurant2 = new Restaurant($name2, $phone2, $id, $cuisine_id2);
         //     $test_restaurant2->save();
         //
         //     //Act
@@ -181,15 +182,15 @@
         //     $test_cuisine = new Cuisine($name, $id);
         //     $test_cuisine->save();
         //
-        //     $description = "Wash the dog";
-        //     $due_date = "2016-02-28";
+        //     $name = "Wash the dog";
+        //     $phone = "503-555-5555";
         //     $cuisine_id = $test_cuisine->getId();
-        //     $test_restaurant = new Restaurant($description, $due_date, $id, $cuisine_id);
+        //     $test_restaurant = new Restaurant($name, $phone, $id, $cuisine_id);
         //     $test_restaurant->save();
         //
-        //     $description2 = "Water the lawn";
-        //     $due_date2 = "2016-02-27";
-        //     $test_restaurant2 = new Restaurant($description2, $due_date2, $id, $cuisine_id);
+        //     $name2 = "Water the lawn";
+        //     $phone2 = "2016-02-27";
+        //     $test_restaurant2 = new Restaurant($name2, $phone2, $id, $cuisine_id);
         //     $test_restaurant2->save();
         //
         //     //Act

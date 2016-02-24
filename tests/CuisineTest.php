@@ -124,29 +124,52 @@
             $this->assertEquals([$test_cuisine, $test_cuisine2], $result);
         }
 
-        // function test_deleteAll()
+        // function testDeleteCategoryRestaurants()
         // {
         //     //Arrange
-        //     $name = "Wash the dog";
-        //     $name2 = "Home stuff";
-        //     $test_Cuisine = new Cuisine($name);
-        //     $test_Cuisine->save();
-        //     $test_Cuisine2 = new Cuisine($name2);
-        //     $test_Cuisine2->save();
+        //     $name = "Mexican";
+        //     $id = null;
+        //     $test_cuisine = new Category($name, $id);
+        //     $test_cuisine->save();
+        //
+        //     $restaurant_name = "Santeria";
+        //     $cuisine_id = $test_cuisine->getId();
+        //     $phone = "503-999-9999";
+        //     $price_range = "Cheap";
+        //     $test_restaurant = new Restaurant($restaurant_name, $phone, $price_range, $id, $cuisine_id);
+        //     $test_restaurant->save();
+        //
         //
         //     //Act
-        //     Cuisine::deleteAll();
-        //     $result = Cuisine::getAll();
+        //     $test_cuisine->delete();
         //
         //     //Assert
-        //     $this->assertEquals([], $result);
+        //     $this->assertEquals([], Restaurant::getAll());
         // }
-        //
+
+        function test_deleteAll()
+        {
+            //Arrange
+            $name = "Mexican";
+            $name2 = "Chinese";
+            $test_cuisine = new Cuisine($name);
+            $test_cuisine->save();
+            $test_cuisine2 = new Cuisine($name2);
+            $test_cuisine2->save();
+
+            //Act
+            Cuisine::deleteAll();
+            $result = Cuisine::getAll();
+
+            //Assert
+            $this->assertEquals([], $result);
+        }
+
         // function test_find()
         // {
         //     //Arrange
-        //     $name = "Wash the dog";
-        //     $name2 = "Home stuff";
+        //     $name = "Mexican";
+        //     $name2 = "Chinese";
         //     $test_Cuisine = new Cuisine($name);
         //     $test_Cuisine->save();
         //     $test_Cuisine2 = new Cuisine($name2);
