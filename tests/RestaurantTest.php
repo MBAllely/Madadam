@@ -45,36 +45,37 @@
             $this->assertEquals(true, is_numeric($result));
         }
 
-        // function test_getCuisineId()
-        // {
-        //     //Arrange
-        //     $name = "Home stuff";
-        //     $id = null;
-        //     $test_cuisine = new Cuisine($name, $id);
-        //     $test_cuisine->save();
-        //
-        //     $name = "Wash the dog";
-        //     $phone = "503-555-5555";
-        //     $cuisine_id = $test_cuisine->getId();
-        //     $test_restaurant = new Restaurant($name, $phone, $id, $cuisine_id);
-        //     $test_restaurant->save();
-        //
-        //     //Act
-        //     $result = $test_restaurant->getCuisineId();
-        //
-        //     //Assert
-        //     $this->assertEquals(true, is_numeric($result));
-        // }
+        function test_getCuisineId()
+        {
+            //Arrange
+            $name = "Mexican";
+            $id = null;
+            $test_cuisine = new Cuisine($name, $id);
+            $test_cuisine->save();
+
+            $name = "Santeria";
+            $phone = "503-555-5555";
+            $price_range = "Cheap";
+            $cuisine_id = $test_cuisine->getId();
+            $test_restaurant = new Restaurant($name, $phone, $price_range, $id, $cuisine_id);
+            $test_restaurant->save();
+
+            //Act
+            $result = $test_restaurant->getCuisineId();
+
+            //Assert
+            $this->assertEquals(true, is_numeric($result));
+        }
         //
         // function test_save()
         // {
         //     //Arrange
-        //     $name = "Home stuff";
+        //     $name = "Mexican";
         //     $id = null;
         //     $test_cuisine = new Cuisine($name, $id);
         //     $test_cuisine->save();
         //
-        //     $name = "Wash the dog";
+        //     $name = "Santeria";
         //     $phone = "503-555-5555";
         //     $cuisine_id = $test_cuisine->getId();
         //     $test_restaurant = new Restaurant($name, $phone, $id, $cuisine_id);
@@ -90,12 +91,12 @@
         // function test_getAll()
         // {
         //     //Arrange
-        //     $name = "Home stuff";
+        //     $name = "Mexican";
         //     $id = null;
         //     $test_cuisine = new Cuisine($name, $id);
         //     $test_cuisine->save();
         //
-        //     $name = "Wash the dog";
+        //     $name = "Santeria";
         //     $phone = "503-555-5555";
         //     $cuisine_id = $test_cuisine->getId();
         //     $test_restaurant = new Restaurant($name, $phone, $id, $cuisine_id);
@@ -117,12 +118,12 @@
         // function test_deleteAll()
         // {
         //     //Arrange
-        //     $name = "Home stuff";
+        //     $name = "Mexican";
         //     $id = null;
         //     $test_cuisine = new Cuisine($name, $id);
         //     $test_cuisine->save();
         //
-        //     $name = "Wash the dog";
+        //     $name = "Santeria";
         //     $phone = "503-555-5555";
         //     $cuisine_id = $test_cuisine->getId();
         //     $test_restaurant = new Restaurant($name, $phone, $id, $cuisine_id);
@@ -154,7 +155,7 @@
         //     $test_Cuisine2 = new Cuisine($name2, $id);
         //     $test_Cuisine2->save();
         //
-        //     $name = "Wash the dog";
+        //     $name = "Santeria";
         //     $phone = "503-555-5555";
         //     $cuisine_id = $test_Cuisine->getId();
         //     $test_restaurant = new Restaurant($name, $phone, $id, $cuisine_id);
@@ -177,12 +178,12 @@
         // function test_find()
         // {
         //     //Arrange
-        //     $name = "Home stuff";
+        //     $name = "Mexican";
         //     $id = null;
         //     $test_cuisine = new Cuisine($name, $id);
         //     $test_cuisine->save();
         //
-        //     $name = "Wash the dog";
+        //     $name = "Santeria";
         //     $phone = "503-555-5555";
         //     $cuisine_id = $test_cuisine->getId();
         //     $test_restaurant = new Restaurant($name, $phone, $id, $cuisine_id);
