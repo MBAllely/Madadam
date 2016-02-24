@@ -1,15 +1,17 @@
 <?php
     class Restaurant
     {
-        private $description;
-        private $due_date;
-        private $cuisine_id;
+        private $name;
+        private $phone;
+        private $price_range;
         private $id;
+        private $cuisine_id;
 
-        function __construct($description, $due_date, $id = null, $cuisine_id)
+        function __construct($name, $phone, $price_range, $id = null, $cuisine_id)
         {
-            $this->description = $description;
-            $this->due_date = $due_date;
+            $this->name = $name;
+            $this->phone = $phone;
+            $this->price_range = $price_range;
             $this->id = $id;
             $this->cuisine_id = $cuisine_id;
         }
@@ -60,11 +62,11 @@
         //     return $restaurants;
         // }
         //
-        // static function deleteAll()
-        // {
-        //     $GLOBALS['DB']->exec("DELETE FROM restaurants;");
-        // }
-        //
+        static function deleteAll()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM restaurants;");
+        }
+
         // static function deleteFromCuisine($cuisine_id)
         // {
         //     $GLOBALS['DB']->exec("DELETE FROM restaurants WHERE cuisine_id = {$cuisine_id};");

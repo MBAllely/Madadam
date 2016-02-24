@@ -22,19 +22,19 @@
           Restaurant::deleteAll();
         }
 
-        // function test_getName()
-        // {
-        //     //Arrange
-        //     $name = "Work stuff";
-        //     $test_cuisine = new Cuisine($name);
-        //
-        //     //Act
-        //     $result = $test_Cuisine->getName();
-        //
-        //     //Assert
-        //     $this->assertEquals($name, $result);
-        // }
-        //
+        function test_getName()
+        {
+            //Arrange
+            $name = "Mexican";
+            $test_cuisine = new Cuisine($name);
+
+            //Act
+            $result = $test_cuisine->getName();
+
+            //Assert
+            $this->assertEquals($name, $result);
+        }
+
         // function test_getId()
         // {
         //     //Arrange

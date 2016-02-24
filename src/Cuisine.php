@@ -10,20 +10,20 @@
             $this->id = $id;
         }
 
-        // function setName($new_name)
-        // {
-        //     $this->name = (string) $new_name;
-        // }
-        //
-        // function getName()
-        // {
-        //     return $this->name;
-        // }
-        //
-        // function getId()
-        // {
-        //     return $this->id;
-        // }
+        function setName($new_name)
+        {
+            $this->name = (string) $new_name;
+        }
+
+        function getName()
+        {
+            return $this->name;
+        }
+
+        function getId()
+        {
+            return $this->id;
+        }
         //
         // function save()
         // {
@@ -59,11 +59,11 @@
         //     return $cuisines;
         // }
         //
-        // static function deleteAll()
-        // {
-        //   $GLOBALS['DB']->exec("DELETE FROM cuisines;");
-        // }
-        //
+        static function deleteAll()
+        {
+          $GLOBALS['DB']->exec("DELETE FROM cuisines;");
+        }
+
         // static function find($search_id)
         // {
         //     $found_cuisine = null;
