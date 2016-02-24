@@ -89,33 +89,35 @@
             $this->assertEquals($test_restaurant, $result[0]);
         }
 
-        // function test_getAll()
-        // {
-        //     //Arrange
-        //     $name = "Mexican";
-        //     $id = null;
-        //     $test_cuisine = new Cuisine($name, $id);
-        //     $test_cuisine->save();
-        //
-        //     $name = "Santeria";
-        //     $phone = "503-555-5555";
-        //     $cuisine_id = $test_cuisine->getId();
-        //     $test_restaurant = new Restaurant($name, $phone, $id, $cuisine_id);
-        //     $test_restaurant->save();
-        //
-        //
-        //     $name2 = "Water the lawn";
-        //     $phone2 = "2016-02-27";
-        //     $test_restaurant2 = new Restaurant($name2, $phone2, $id, $cuisine_id);
-        //     $test_restaurant2->save();
-        //
-        //     //Act
-        //     $result = Restaurant::getAll();
-        //
-        //     //Assert
-        //     $this->assertEquals([$test_restaurant, $test_restaurant2], $result);
-        // }
-        //
+        function test_getAll()
+        {
+            //Arrange
+            $name = "Mexican";
+            $id = null;
+            $test_cuisine = new Cuisine($name, $id);
+            $test_cuisine->save();
+
+            $name = "Santeria";
+            $phone = "503-555-5555";
+            $price_range = "Cheap";
+            $cuisine_id = $test_cuisine->getId();
+            $test_restaurant = new Restaurant($name, $phone, $price_range, $id, $cuisine_id);
+            $test_restaurant->save();
+
+
+            $name2 = "Los Pollos Hermanos";
+            $phone2 = "503-111-1111";
+            $price_range2 = "Average";
+            $test_restaurant2 = new Restaurant($name2, $phone2, $price_range2, $id, $cuisine_id);
+            $test_restaurant2->save();
+
+            //Act
+            $result = Restaurant::getAll();
+
+            //Assert
+            $this->assertEquals([$test_restaurant, $test_restaurant2], $result);
+        }
+
         // function test_deleteAll()
         // {
         //     //Arrange
