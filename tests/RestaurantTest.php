@@ -89,6 +89,29 @@
             $this->assertEquals($test_restaurant, $result[0]);
         }
 
+        function testUpdateName()
+        {
+            //Arrange
+            $name = "Mexican";
+            $id = null;
+            $test_cuisine = new Cuisine($name, $id);
+            $test_cuisine->save();
+
+            $name = "Santeria";
+            $phone = "503-555-5555";
+            $price_range = "Cheap";
+            $cuisine_id = $test_cuisine->getId();
+            $test_restaurant = new Restaurant($name, $phone, $price_range, $id, $cuisine_id);
+
+            $new_name = "Santeria 2.0";
+
+            //Act
+            $test_restaurant->updateName($new_name);
+
+            //Assert
+            $this->assertEquals("Santeria 2.0", $test_restaurant->getName());
+        }
+
         function test_getAll()
         {
             //Arrange
@@ -169,39 +192,6 @@
             $this->assertEquals([], Restaurant::getAll());
         }
 
-        // function test_deleteFromCuisine()
-        // {
-        //     //Arrange
-        //     $name = "Home Stuff";
-        //     $id = null;
-        //     $test_Cuisine = new Cuisine($name, $id);
-        //     $test_Cuisine->save();
-        //
-        //     $name2 = "Dinner Stuff";
-        //     $id = null;
-        //     $test_Cuisine2 = new Cuisine($name2, $id);
-        //     $test_Cuisine2->save();
-        //
-        //     $name = "Santeria";
-        //     $phone = "503-555-5555";
-        //     $cuisine_id = $test_Cuisine->getId();
-        //     $test_restaurant = new Restaurant($name, $phone, $id, $cuisine_id);
-        //     $test_restaurant->save();
-        //
-        //     $name2 = "Chop the onion";
-        //     $phone2 = "2016-02-26";
-        //     $cuisine_id2 = $test_Cuisine2->getId();
-        //     $test_restaurant2 = new Restaurant($name2, $phone2, $id, $cuisine_id2);
-        //     $test_restaurant2->save();
-        //
-        //     //Act
-        //     Restaurant::deleteFromCuisine($cuisine_id);
-        //     $result = Restaurant::getAll();
-        //
-        //     //Assert
-        //     $this->assertEquals([$test_restaurant2], $result);
-        // }
-        //
         // function test_find()
         // {
         //     //Arrange
