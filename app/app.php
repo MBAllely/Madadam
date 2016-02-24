@@ -26,6 +26,10 @@
         return $app['twig']->render('index.html.twig', array('cuisines' => Cuisine::getAll()));
     });
 
+    $app->get("/cuisines/{id}", function($id) use ($app) {
+        $cuisine = Cuisine::find($id);
+        return $app['twig']->render('cuisines.html.twig', array('cuisine' => $cuisine, 'restaurants' => $cuisine->getRestaurants()));
+    });
 
     // $app->get("/cuisines", function() use ($app) {
     //     return $app['twig']->render('cuisines.html.twig', array('cuisines' => Cuisine::getAll()));
@@ -36,10 +40,6 @@
 //     });
 //
 //
-//     $app->get("/cuisines/{id}", function($id) use ($app) {
-//         $cuisine = Cuisine::find($id);
-//         return $app['twig']->render('cuisine.html.twig', array('cuisine' => $cuisine, 'restaurants' => $cuisine->getRestaurants()));
-//     });
 //
 //
 //     $app->post("/restaurants", function() use ($app) {
@@ -58,10 +58,10 @@
 //         return $app['twig']->render('cuisine.html.twig', array('cuisine' => $cuisine_id));
 //     });
 //
-//     $app->post("/delete_cuisines", function() use ($app) {
-//        Cuisine::deleteAll();
-//        return $app['twig']->render('index.html.twig');
-//    });
+    $app->post("/delete_cuisines", function() use ($app) {
+       Cuisine::deleteAll();
+       return $app['twig']->render('index.html.twig');
+   });
 
     return $app;
 
