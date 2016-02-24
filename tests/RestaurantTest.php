@@ -112,6 +112,52 @@
             $this->assertEquals("Santeria 2.0", $test_restaurant->getName());
         }
 
+        function testUpdatePhone()
+        {
+            //Arrange
+            $name = "Mexican";
+            $id = null;
+            $test_cuisine = new Cuisine($name, $id);
+            $test_cuisine->save();
+
+            $name = "Santeria";
+            $phone = "503-555-5555";
+            $price_range = "Cheap";
+            $cuisine_id = $test_cuisine->getId();
+            $test_restaurant = new Restaurant($name, $phone, $price_range, $id, $cuisine_id);
+
+            $new_phone = "203-555-5555";
+
+            //Act
+            $test_restaurant->updatePhone($new_phone);
+
+            //Assert
+            $this->assertEquals("203-555-5555", $test_restaurant->getPhone());
+        }
+
+        function testUpdatePriceRange()
+        {
+            //Arrange
+            $name = "Mexican";
+            $id = null;
+            $test_cuisine = new Cuisine($name, $id);
+            $test_cuisine->save();
+
+            $name = "Santeria";
+            $phone = "503-555-5555";
+            $price_range = "Cheap";
+            $cuisine_id = $test_cuisine->getId();
+            $test_restaurant = new Restaurant($name, $phone, $price_range, $id, $cuisine_id);
+
+            $new_price_range = "Average";
+
+            //Act
+            $test_restaurant->updatePriceRange($new_price_range);
+
+            //Assert
+            $this->assertEquals("Average", $test_restaurant->getPriceRange());
+        }
+
         function test_getAll()
         {
             //Arrange

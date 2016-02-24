@@ -68,6 +68,18 @@
             $this->setName($new_name);
         }
 
+        function updatePhone($new_phone)
+        {
+            $GLOBALS['DB']->exec("UPDATE restaurants SET phone = '{$new_phone}' WHERE id = {$this->getId()};");
+            $this->setPhone($new_phone);
+        }
+
+        function updatePriceRange($new_price_range)
+        {
+            $GLOBALS['DB']->exec("UPDATE restaurants SET price_range = '{$new_price_range}' WHERE id = {$this->getId()};");
+            $this->setPriceRange($new_price_range);
+        }
+
         static function getAll()
         {
             $returned_restaurants = $GLOBALS['DB']->query("SELECT * FROM restaurants;");
