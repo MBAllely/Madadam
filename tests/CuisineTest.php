@@ -165,6 +165,28 @@
             $this->assertEquals([], $result);
         }
 
+        function testDeleteCuisine()
+        {
+            //Arrange
+            $name = "Mexican";
+            $id = null;
+            $test_cuisine = new Cuisine($name);
+            $test_cuisine->save();
+
+            $restaurant_name = "Santeria";
+            $cuisine_id = $test_cuisine->getId();
+            $phone = "503-999-9999";
+            $price_range = "Cheap";
+            $test_restaurant = new Restaurant($restaurant_name, $phone, $price_range, $id, $cuisine_id);
+            $test_restaurant->save();
+
+            //Act
+            $test_cuisine->deleteCuisine();
+
+            //Assert
+            $this->assertEquals([], Restaurant::getAll());
+        }
+
         // function test_find()
         // {
         //     //Arrange

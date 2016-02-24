@@ -216,7 +216,7 @@
             $this->assertEquals([], $result);
         }
 
-        function testDeleteCuisineRestaurants()
+        function testDeleteRestaurants()
         {
             //Arrange
             $name = "Mexican";
@@ -261,7 +261,7 @@
 
             //Act
             $result = Restaurant::find($test_restaurant->getId());
-        
+
             //Assert
             $this->assertEquals($test_restaurant, $result);
         }
