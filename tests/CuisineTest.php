@@ -35,20 +35,20 @@
             $this->assertEquals($name, $result);
         }
 
-        // function test_getId()
-        // {
-        //     //Arrange
-        //     $name = "Work stuff";
-        //     $id = 1;
-        //     $test_Cuisine = new Cuisine($name, $id);
-        //
-        //     //Act
-        //     $result = $test_Cuisine->getId();
-        //
-        //     //Assert
-        //     $this->assertEquals(true, is_numeric($result));
-        // }
-        //
+        function test_getId()
+        {
+            //Arrange
+            $name = "Mexican";
+            $id = 1;
+            $test_cuisine = new Cuisine($name, $id);
+
+            //Act
+            $result = $test_cuisine->getId();
+
+            //Assert
+            $this->assertEquals(true, is_numeric($result));
+        }
+
         // function test_save()
         // {
         //     //Arrange
