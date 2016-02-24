@@ -37,20 +37,21 @@
             $this->setName($new_name);
         }
 
-        // function getTasks()
-        // {
-        //     $restaurants = Array();
-        //     $returned_restaurants = $GLOBALS['DB']->query("SELECT * FROM restaurants WHERE cuisine_id = {$this->getId()} ORDER BY due_date;");
-        //     foreach($returned_restaurants as $restaurant) {
-        //         $description = $restaurant['description'];
-        //         $due_date = $restaurant['due_date'];
-        //         $id = $restaurant['id'];
-        //         $cuisine_id = $restaurant['cuisine_id'];
-        //         $new_restaurant = new Task($description, $due_date, $id, $cuisine_id);
-        //         array_push($restaurants, $new_restaurant);
-        //     }
-        //     return $restaurants;
-        // }
+        function getRestaurants()
+        {
+            $restaurants = Array();
+            $returned_restaurants = $GLOBALS['DB']->query("SELECT * FROM restaurants WHERE cuisine_id = {$this->getId()}");
+            foreach($returned_restaurants as $restaurant) {
+                $name = $restaurant['name'];
+                $phone = $restaurant['phone'];
+                $price_range = $restaurant['price_range'];
+                $id = $restaurant['id'];
+                $cuisine_id = $restaurant['cuisine_id'];
+                $new_restaurant = new Restaurant($name, $phone, $price_range, $id, $cuisine_id);
+                array_push($restaurants, $new_restaurant);
+            }
+            return $restaurants;
+        }
 
         static function getAll()
         {

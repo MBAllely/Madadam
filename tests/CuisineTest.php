@@ -80,32 +80,36 @@
             $this->assertEquals("Puerto Rican", $test_cuisine->getName());
         }
 
-        // function testGetRestaurants()
-        // {
-        //     //Arrange
-        //     $name = "Work stuff";
-        //     $id = null;
-        //     $test_cuisine = new Cuisine($name, $id);
-        //     $test_cuisine->save();
-        //
-        //     $test_cuisine_id = $test_cuisine->getId();
-        //
-        //     $description = "Email client";
-        //     $due_date = "1990-04-07";
-        //     $test_restaurant = new Restaurant($description, $due_date, $id, $test_cuisine_id);
-        //     $test_restaurant->save();
-        //
-        //     $description2 = "Meet with boss";
-        //     $due_date2 = "2016-06-13";
-        //     $test_restaurant2 = new Restaurant($description2, $due_date2, $id, $test_cuisine_id);
-        //     $test_restaurant2->save();
-        //
-        //     //Act
-        //     $result = $test_cuisine->getRestaurants();
-        //
-        //     //Assert
-        //     $this->assertEquals([$test_restaurant, $test_restaurant2], $result);
-        // }
+        function testGetRestaurants()
+        {
+            //Arrange
+            $name = "Mexican";
+            $id = null;
+            $test_cuisine = new Cuisine($name, $id);
+            $test_cuisine->save();
+
+            $test_cuisine_id = $test_cuisine->getId();
+
+            $restaurant_name = "Santeria";
+            $cuisine_id = $test_cuisine->getId();
+            $phone = "503-999-9999";
+            $price_range = "Cheap";
+            $test_restaurant = new Restaurant($restaurant_name, $phone, $price_range, $id, $cuisine_id);
+            $test_restaurant->save();
+
+            $restaurant_name2 = "Los Pollos Hermanos";
+            $cuisine_id = $test_cuisine->getId();
+            $phone2 = "503-111-1111";
+            $price_range2 = "Average";
+            $test_restaurant2 = new Restaurant($restaurant_name2, $phone2, $price_range2, $id, $cuisine_id);
+            $test_restaurant2->save();
+
+            //Act
+            $result = $test_cuisine->getRestaurants();
+
+            //Assert
+            $this->assertEquals([$test_restaurant, $test_restaurant2], $result);
+        }
 
         function test_getAll()
         {
@@ -123,29 +127,6 @@
             //Assert
             $this->assertEquals([$test_cuisine, $test_cuisine2], $result);
         }
-
-        // function testDeleteCategoryRestaurants()
-        // {
-        //     //Arrange
-        //     $name = "Mexican";
-        //     $id = null;
-        //     $test_cuisine = new Category($name, $id);
-        //     $test_cuisine->save();
-        //
-        //     $restaurant_name = "Santeria";
-        //     $cuisine_id = $test_cuisine->getId();
-        //     $phone = "503-999-9999";
-        //     $price_range = "Cheap";
-        //     $test_restaurant = new Restaurant($restaurant_name, $phone, $price_range, $id, $cuisine_id);
-        //     $test_restaurant->save();
-        //
-        //
-        //     //Act
-        //     $test_cuisine->delete();
-        //
-        //     //Assert
-        //     $this->assertEquals([], Restaurant::getAll());
-        // }
 
         function test_deleteAll()
         {
