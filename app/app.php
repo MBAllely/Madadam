@@ -66,6 +66,15 @@
         return $app['twig']->render('cuisines.html.twig', array('cuisine' => $cuisine, 'restaurants' => $cuisine->getRestaurants()));
     });
 
+    $app->patch("/restaurants/{id}/phone", function($id) use ($app) {
+        $new_phone = $_POST['phone'];
+        $restaurant = Restaurant::find($id);
+        $restaurant->updatePhone($new_phone);
+        $cuisine_id = $restaurant->getCuisineId();
+        $cuisine = Cuisine::find($cuisine_id);
+        return $app['twig']->render('cuisines.html.twig', array('cuisine' => $cuisine, 'restaurants' => $cuisine->getRestaurants()));
+    });
+
     $app->post("/delete_cuisines", function() use ($app) {
        Cuisine::deleteAll();
        return $app['twig']->render('index.html.twig');

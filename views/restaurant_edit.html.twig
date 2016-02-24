@@ -14,6 +14,15 @@
       <button type="submit">Update</button>
     </form>
 
+    <form action="/restaurants/{{ restaurant.getId }}/phone" method="post">
+      <input name="_method" type="hidden" value="patch">
+
+      <label for="phone">New Phone Number:</label>
+      <input id="phone" name="phone" type="text">
+
+      <button type="submit">Update</button>
+    </form>
+
     <p><a href='/'>Home</a></p>
 </body>
 </html>
