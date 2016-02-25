@@ -156,6 +156,28 @@
         //     $this->assertEquals(true, is_numeric($result));
         //
         // }
+
+        function test_find()
+        {
+            //Arrange
+            $description = "Tasty sandwich";
+            $rating = "***";
+            $restaurant_id = 1;
+            $test_review = new Review($description, $rating, $restaurant_id);
+            $test_review->save();
+
+            $description2 = "Big portions!";
+            $rating2 = "**";
+            $restaurant_id2 = 1;
+            $test_review2 = new Review($description2, $rating2, $restaurant_id2);
+            $test_review2->save();
+
+            //Act
+            $result = Review::find($test_review2->getId());
+
+            //Assert
+            $this->assertEquals($test_review2, $result);
+        }
     }
 
 
