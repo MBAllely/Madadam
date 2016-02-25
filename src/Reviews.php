@@ -19,9 +19,9 @@
             $this->description = (string) $new_description;
         }
 
-        function setRating($rating)
+        function setRating($new_rating)
         {
-            $this->rating = $rating;
+            $this->rating = (string) $new_rating;
         }
 
         // function setRestaurantId($restaurant_id)
@@ -77,6 +77,27 @@
             return $reviews;
         }
 
+        static function find($search_id)
+        {
+            $found_review = null;
+            $reviews = Review::getAll();
+            foreach($reviews as $review) {
+                $review_id = $review->getId();
+                if ($review_id == $search_id) {
+                    $found_review = $review;
+                }
+            }
+            return $found_review;
+        }
+
+        function updateReview($new_description, $new_rating)
+        {
+            $GLOBALS['DB']->exec("UPDATE reviews SET description = '{$new_description}' WHERE id = {$this->getId()};");
+            $this->setDescription($new_description);
+            $GLOBALS['DB']->exec("UPDATE reviews SET rating = '{$new_rating}' WHERE id = {$this->getId()};");
+            $this->setRating($new_rating);
+        }
+
         static function delete($restaurant_id)
         {
             $GLOBALS['DB']->exec("DELETE FROM reviews WHERE restaurant_id = {$restaurant_id};");
@@ -92,18 +113,6 @@
             $GLOBALS['DB']->exec("DELETE FROM reviews;");
         }
 
-        static function find($search_id)
-        {
-            $found_review = null;
-            $reviews = Review::getAll();
-            foreach($reviews as $review) {
-                $review_id = $review->getId();
-                if ($review_id == $search_id) {
-                    $found_review = $review;
-                }
-            }
-            return $found_review;
-        }
     }
 
 

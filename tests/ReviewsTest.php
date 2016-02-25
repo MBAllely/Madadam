@@ -161,6 +161,39 @@
             $this->assertEquals($test_review2, $result);
         }
 
+        function testUpdateReview()
+        {
+            //Arrange
+            $name = "Mexican";
+            $id = null;
+            $test_cuisine = new Cuisine($name, $id);
+            $test_cuisine->save();
+
+            $name = "Santeria";
+            $phone = "503-555-5555";
+            $price_range = "Cheap";
+            $id = null;
+            $cuisine_id = $test_cuisine->getId();
+            $test_restaurant = new Restaurant($name, $phone, $price_range, $id, $cuisine_id);
+            $test_restaurant->save();
+
+
+            $description = "Tasty sandwich";
+            $rating = "***";
+            $restaurant_id = $test_restaurant->getId();
+            $test_review = new Review($description, $rating, $restaurant_id);
+            $test_review->save();
+
+            $new_description = "Big portions!";
+            $new_rating = "**";
+
+            //Act
+            $test_review->updateReview($new_description, $new_rating);
+
+            //Assert
+            $this->assertEquals(Review::getAll(), [$test_review]);
+        }
+
         function test_deleteReviews()
         {
             //Arrange
