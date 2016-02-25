@@ -8,9 +8,9 @@
 
         function __construct($description, $rating, $restaurant_id, $id = null)
         {
-            $this->desciption = $description;
+            $this->description = $description;
             $this->rating = $rating;
-            $restaurant_id = $restaurant_id;
+            $this->restaurant_id = $restaurant_id;
             $this->id = $id;
         }
 
@@ -24,9 +24,14 @@
             $this->rating = $rating;
         }
 
+        // function setRestaurantId($restaurant_id)
+        // {
+        //     $this->restaurant_id = $restaurant_id;
+        // }
+
         function getDescription()
         {
-            return $this->desciption;
+            return $this->description;
         }
 
         function getRating()
@@ -44,6 +49,38 @@
             return $this->id;
         }
 
+        // function save()
+        // {
+        //     $GLOBALS['DB']->exec("INSERT INTO reviews (description, rating, restaurant_id) VALUES ( '{$this->getDescription()}', '{$this->getRating()}', {$this->getRestaurantId()});");
+        //     $this->id = $GLOBALS['DB']->lastInsertId();
+        // }
+
+        function save()
+        {
+            $GLOBALS['DB']->exec("INSERT INTO reviews (description, rating, restaurant_id) VALUES ('{$this->getDescription()}', '{$this->getRating()}', {$this->getRestaurantId()});");
+            $this->id = $GLOBALS['DB']->lastInsertId();
+        }
+
+
+        static function getAll()
+        {
+            $returned_reviews = $GLOBALS['DB']->query("SELECT * FROM reviews;");
+            $reviews = [];
+            foreach ($returned_reviews as $review){
+                $description = $review['description'];
+                $rating = $review['rating'];
+                $restaurant_id = $review['restaurant_id'];
+                $id = $review['id'];
+                $new_review = new Review($description, $rating, $restaurant_id, $id);
+                array_push($reviews, $new_review);
+            }
+            return $reviews;
+        }
+
+        static function deleteAll()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM reviews;");
+        }
 
     }
 
