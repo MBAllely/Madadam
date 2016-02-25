@@ -161,7 +161,7 @@
             $this->assertEquals($test_review2, $result);
         }
 
-        function testUpdateReview()
+        function test_UpdateReview()
         {
             //Arrange
             $name = "Mexican";

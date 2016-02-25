@@ -124,5 +124,20 @@
             return $found_restaurant;
         }
 
+        function getReviews()
+        {
+            $reviews = [];
+            $returned_reviews = $GLOBALS['DB']->query("SELECT * FROM reviews WHERE restaurant_id = {$this->getId()};");
+            foreach ($returned_reviews as $review) {
+                $description = $review['description'];
+                $rating = $review['rating'];
+                $restaurant_id = $review['restaurant_id'];
+                $id = $review['id'];
+                $new_review = new Review($description, $rating, $restaurant_id, $id);
+                array_push($reviews, $new_review);
+            }
+            return $reviews;
+        }
+
     }
 ?>

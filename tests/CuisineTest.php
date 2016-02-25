@@ -128,6 +128,22 @@
             $this->assertEquals([$test_cuisine, $test_cuisine2], $result);
         }
 
+        function test_UpdateCuisine()
+        {
+            //Arrange
+            $name = "Mexican";
+            $test_cuisine = new Cuisine($name);
+            $test_cuisine->save();
+            $new_name = "Por Que No";
+
+            //Act
+            $test_cuisine->update($new_name);
+
+            //Assert
+            $this->assertEquals("Por Que No", $test_cuisine->getName());
+
+        }
+
         function test_deleteAll()
         {
             //Arrange

@@ -1,0 +1,49 @@
+<html>
+<head>
+    <title>Restaurant List</title>
+</head>
+<body>
+    <h1>{{ restaurant.getName }}</h1>
+
+    <h4>Review {{ restaurant.getName }}</h4>
+
+    <form action='/restaurants/review' method='post'>
+        <input id="restaurant_id" name="restaurant_id" type="hidden" value="{{ restaurant.getId }}">
+        <label for='description'>Review</label>
+        <textarea id='description' name='description' type='text'></textarea>
+        <label for='rating'>Rating</label>
+        <select name="rating">
+            <option value="*">*</option>
+            <option value="**">**</option>
+            <option value="***">***</option>
+            <option value="****">****</option>
+            <option value="*****">*****</option>
+        </select>
+        <button type='submit'>Review restaurant</button>
+    </form>
+
+    {% if reviews is not empty %}
+        <p>{{ restaurant.getName }}:</p>
+        <ul>
+            {% for review in reviews %}
+                <li>
+                    <p>{{ review.getDescription }}</p>
+                    <p>Rating: <em>{{ review.getRating }}</em></p>
+                    <form action="/restaurants/{{ restaurant.getId }}/edit" method="get">
+                        <button type="submit" name="button">Edit restaurant</button>
+                    </form>
+                    <form action="/restaurants/{{ restaurant.getId }}/review" method="get">
+                        <button type="submit" name="button">Review this restaurant</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+        <form action="/delete_restaurants/{{ cuisine.getId }}" method="post">
+            <input name="_method" type="hidden" value="delete">
+            <button type="submit" name="button">Delete restaurants</button>
+        </form>
+    {% endif %}
+
+    <p><a href='/'>Home</a></p>
+</body>
+</html>

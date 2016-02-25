@@ -159,6 +159,42 @@
             $this->assertEquals("Average", $test_restaurant->getPriceRange());
         }
 
+        function testGetReviews()
+        {
+            //Arrange
+            $name = "Mexican";
+            $id = null;
+            $test_cuisine = new Cuisine($name, $id);
+            $test_cuisine->save();
+
+            $test_cuisine_id = $test_cuisine->getId();
+
+            $restaurant_name = "Santeria";
+            $cuisine_id = $test_cuisine->getId();
+            $phone = "503-999-9999";
+            $price_range = "Cheap";
+            $test_restaurant = new Restaurant($restaurant_name, $phone, $price_range, $id, $cuisine_id);
+            $test_restaurant->save();
+
+            $description = "Mealy and bitter.  Just like life >:|";
+            $rating = "*";
+            $restaurant_id = $test_restaurant->getId();
+            $test_review = new Review($description, $rating, $restaurant_id);
+            $test_review->save();
+
+            $description2 = "FABOO!";
+            $rating2 = "*****";
+            $test_review2 = new Review($description2, $rating2, $restaurant_id);
+            $test_review2->save();
+
+            //Act
+            $result = $test_restaurant->getReviews();
+
+            //Assert
+            $this->assertEquals([$test_review, $test_review2], $result);
+        }
+
+
         function test_getAll()
         {
             //Arrange
