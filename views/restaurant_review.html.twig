@@ -10,7 +10,7 @@
     <form action='/restaurants/{{ restaurant.getId }}/review' method='post'>
         <input id="restaurant_id" name="restaurant_id" type="hidden" value="{{ restaurant.getId }}">
         <label for='description'>Review</label>
-        <textarea id='description' name='description' type='text'></textarea>
+        <textarea rows="7" cols="50" id='description' name='description' type='text'></textarea>
         <label for='rating'>Rating</label>
         <select name="rating">
             <option value="*">*</option>
@@ -29,16 +29,16 @@
                 <li>
                     <p>{{ review.getDescription }}</p>
                     <p>Rating: <em>{{ review.getRating }}</em></p>
-                    <!-- <form action="/restaurants/{{ restaurant.getId }}/edit" method="get">
-                        <button type="submit" name="button">Edit restaurant</button>
-                    </form> -->
+                    <form action="/restaurants/{{ restaurant.getId }}/review/{{ review.getId }}/edit" method="get">
+                        <button type="submit" name="button">Edit review</button>
+                    </form>
+                    <form action="/restaurants/{{ restaurant.getId }}/review/{{ review.getId }}/delete" method="get">
+                        <button type="submit" name="button">Delete review</button>
+                    </form>
                 </li>
             {% endfor %}
         </ul>
-        <form action="/delete_reviews/{{ restaurant.getId }}" method="post">
-            <input name="_method" type="hidden" value="delete">
-            <button type="submit" name="button">Delete restaurants</button>
-        </form>
+
     {% else %}
         <p>
             Hi
