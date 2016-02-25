@@ -77,6 +77,16 @@
             return $reviews;
         }
 
+        static function delete($restaurant_id)
+        {
+            $GLOBALS['DB']->exec("DELETE FROM reviews WHERE restaurant_id = {$restaurant_id};");
+        }
+
+        function deleteOneReview()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM reviews WHERE id = {$this->getId()};");
+        }
+
         static function deleteAll()
         {
             $GLOBALS['DB']->exec("DELETE FROM reviews;");

@@ -109,53 +109,35 @@
 
         }
 
-        function test_deleteAll()
+        function test_getRestaurantId()
         {
             //Arrange
-            $description = "Tasty sandwich";
-            $rating = "***";
-            $restaurant_id = 1;
-            $test_review = new Review($description, $rating, $restaurant_id);
+            $name = "Mexican";
+            $id = null;
+            $test_cuisine = new Cuisine($name, $id);
+            $test_cuisine->save();
+
+            $name = "Santeria";
+            $phone = "503-555-5555";
+            $price_range = "Cheap";
+            $id = null;
+            $cuisine_id = $test_cuisine->getId();
+            $test_restaurant = new Restaurant($name, $phone, $price_range, $id, $cuisine_id);
+            $test_restaurant->save();
+
+            $description = "Nice atmosphere";
+            $rating = "**";
+            $restaurant_id = $test_restaurant->getId();
+            $test_review = new Review($description, $rating, $restaurant_id, $id);
             $test_review->save();
 
-            $description2 = "Big portions!";
-            $rating2 = "**";
-            $restaurant_id2 = 1;
-            $test_review2 = new Review($description2, $rating2, $restaurant_id2);
-            $test_review2->save();
-
             //Act
-            Review::deleteAll();
+            $result = $test_review->getRestaurantId();
 
             //Assert
-            $result = Review::getAll();
-            $this->assertEquals([], $result);
-        }
+            $this->assertEquals(true, is_numeric($result));
 
-        // function test_getRestaurantId()
-        // {
-        //     //Arrange
-        //     $name = "Santeria";
-        //     $phone = "503-555-5555";
-        //     $price_range = "Cheap";
-        //     $id = null;
-        //     $cuisine_id = $test_cuisine->getId();
-        //     $test_restaurant = new Restaurant($name, $phone, $price_range, $id, $cuisine_id);
-        //     $test_restaurant->save();
-        //
-        //     $description = "Nice atmosphere";
-        //     $dating = "**";
-        //     $restaurant_id = $test_restaurant->getId();
-        //     $test_review= new Review($description, $rating, $restaurant_id, $id);
-        //     $test_review->save();
-        //
-        //     //Act
-        //     $result = $test_review->getRestaurantId();
-        //
-        //     //Assert
-        //     $this->assertEquals(true, is_numeric($result));
-        //
-        // }
+        }
 
         function test_find()
         {
@@ -177,6 +159,93 @@
 
             //Assert
             $this->assertEquals($test_review2, $result);
+        }
+
+        function test_deleteReviews()
+        {
+            //Arrange
+            $name = "Mexican";
+            $id = null;
+            $test_cuisine = new Cuisine($name, $id);
+            $test_cuisine->save();
+
+            $name = "Santeria";
+            $phone = "503-555-5555";
+            $price_range = "Cheap";
+            $id = null;
+            $cuisine_id = $test_cuisine->getId();
+            $test_restaurant = new Restaurant($name, $phone, $price_range, $id, $cuisine_id);
+            $test_restaurant->save();
+
+            $description = "Nice atmosphere";
+            $rating = "**";
+            $restaurant_id = $test_restaurant->getId();
+            $test_review = new Review($description, $rating, $restaurant_id, $id);
+            $test_review->save();
+
+            //Act
+            $result = $test_review->delete($restaurant_id);
+
+            //Assert
+            $this->assertEquals([], Review::getAll());
+        }
+
+        function test_deleteOneReview()
+        {
+            //Arrange
+            $name = "Mexican";
+            $id = null;
+            $test_cuisine = new Cuisine($name, $id);
+            $test_cuisine->save();
+
+            $name = "Santeria";
+            $phone = "503-555-5555";
+            $price_range = "Cheap";
+            $id = null;
+            $cuisine_id = $test_cuisine->getId();
+            $test_restaurant = new Restaurant($name, $phone, $price_range, $id, $cuisine_id);
+            $test_restaurant->save();
+
+            $description = "Nice atmosphere";
+            $rating = "**";
+            $restaurant_id = $test_restaurant->getId();
+            $test_review = new Review($description, $rating, $restaurant_id, $id);
+            $test_review->save();
+
+            $description2 = "Ugly interior";
+            $rating2 = "*2";
+            $restaurant_id2 = $test_restaurant->getId();
+            $test_review2 = new Review($description2, $rating2, $restaurant_id2, $id);
+            $test_review2->save();
+
+            //Act
+            $test_review->deleteOneReview();
+
+            //Assert
+            $this->assertEquals([$test_review2], Review::getAll());
+
+        }
+        function test_deleteAll()
+        {
+            //Arrange
+            $description = "Tasty sandwich";
+            $rating = "***";
+            $restaurant_id = 1;
+            $test_review = new Review($description, $rating, $restaurant_id);
+            $test_review->save();
+
+            $description2 = "Big portions!";
+            $rating2 = "**";
+            $restaurant_id2 = 1;
+            $test_review2 = new Review($description2, $rating2, $restaurant_id2);
+            $test_review2->save();
+
+            //Act
+            Review::deleteAll();
+
+            //Assert
+            $result = Review::getAll();
+            $this->assertEquals([], $result);
         }
     }
 
