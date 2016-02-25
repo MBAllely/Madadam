@@ -7,7 +7,7 @@
 
     <h4>Review {{ restaurant.getName }}</h4>
 
-    <form action='/restaurants/review' method='post'>
+    <form action='/restaurants/{{ restaurant.getId }}/review' method='post'>
         <input id="restaurant_id" name="restaurant_id" type="hidden" value="{{ restaurant.getId }}">
         <label for='description'>Review</label>
         <textarea id='description' name='description' type='text'></textarea>
@@ -29,19 +29,20 @@
                 <li>
                     <p>{{ review.getDescription }}</p>
                     <p>Rating: <em>{{ review.getRating }}</em></p>
-                    <form action="/restaurants/{{ restaurant.getId }}/edit" method="get">
+                    <!-- <form action="/restaurants/{{ restaurant.getId }}/edit" method="get">
                         <button type="submit" name="button">Edit restaurant</button>
-                    </form>
-                    <form action="/restaurants/{{ restaurant.getId }}/review" method="get">
-                        <button type="submit" name="button">Review this restaurant</button>
-                    </form>
+                    </form> -->
                 </li>
             {% endfor %}
         </ul>
-        <form action="/delete_restaurants/{{ cuisine.getId }}" method="post">
+        <form action="/delete_reviews/{{ restaurant.getId }}" method="post">
             <input name="_method" type="hidden" value="delete">
             <button type="submit" name="button">Delete restaurants</button>
         </form>
+    {% else %}
+        <p>
+            Hi
+        </p>
     {% endif %}
 
     <p><a href='/'>Home</a></p>

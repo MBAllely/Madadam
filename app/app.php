@@ -2,6 +2,7 @@
     require_once __DIR__."/../vendor/autoload.php";
     require_once __DIR__."/../src/Restaurant.php";
     require_once __DIR__."/../src/Cuisine.php";
+    require_once __DIR__."/../src/Reviews.php";
 
     $app = new Silex\Application();
 
@@ -25,11 +26,11 @@
 
     $app->get("/cuisines/{id}", function($id) use ($app) {
         $cuisine = Cuisine::find($id);
+        $restaurants = Restaurant::getAll();
         return $app['twig']->render('cuisines.html.twig',
         array(
             'cuisine' => $cuisine,
-            'restaurants' => $cuisine->getRestaurants()
-            'reviews' => $restaurant->getReviews()
+            'restaurants' => $restaurants
         ));
     });
 
@@ -40,10 +41,37 @@
 
     $app->get("/restaurants/{id}/review", function($id) use ($app) {
         $restaurant = Restaurant::find($id);
-        $review =
+        $reviews = Reviews::getAll();
         return $app['twig']->render('restaurant_review.html.twig',
         array(
-            'restaurant' => $restaurant
+            'restaurant' => $restaurant,
+            'reviews' => $reviews
+
+        ));
+    });
+
+    $app->post("/restaurants/{id}/review", function($id) use ($app) {
+        $description = $_POST['description'];
+        if ($_POST['rating'] == "*") {
+            $rating = "*";
+        } elseif ($_POST['rating'] == "**") {
+            $rating = "**";
+        } elseif ($_POST['rating'] == "***") {
+            $rating = "***";
+        } elseif ($_POST['rating'] == "****") {
+            $rating = "****";
+        } elseif ($_POST['rating'] == "*****") {
+            $rating = "*****";
+        }
+        $restaurant_id = $_POST['restaurant_id'];
+        $new_review = new Review($description, $rating, $restaurant_id, $id = null);
+        $new_review->save();
+        $restaurant = Restaurant::find($restaurant_id);
+
+        return $app['twig']->render('restaurant_review.html.twig',
+        array(
+            'restaurant' => $restaurant,
+            'reviews' => $restaurant->getReviews()
         ));
     });
 
