@@ -49,7 +49,7 @@
     $app->delete("/delete_restaurants/{id}", function($id) use ($app) {
         $cuisine = Cuisine::find($id);
         Restaurant::delete($id);
-        return $app['twig']->render('cuisines.html.twig', array('cuisine' => $cuisine));
+        return $app['twig']->render('cuisines.html.twig', array('cuisine' => $cuisine, 'restaurants' => $cuisine->getRestaurants()));
     });
 
     $app->get("/restaurants/{id}/edit", function($id) use ($app) {
@@ -94,7 +94,7 @@
 
     $app->post("/delete_cuisines", function() use ($app) {
        Cuisine::deleteAll();
-       return $app['twig']->render('index.html.twig');
+       return $app['twig']->render('index.html.twig', array('cuisines' => Cuisine::getAll()));
    });
 
     return $app;

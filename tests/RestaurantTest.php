@@ -7,6 +7,7 @@
 
     require_once "src/Restaurant.php";
     require_once "src/Cuisine.php";
+    require_once "src/Reviews.php";
 
     $server = 'mysql:host=localhost;dbname=restaurants_test';
     $username = 'root';
@@ -232,7 +233,7 @@
             $test_restaurant->save();
 
             //Act
-            $test_restaurant->delete();
+            $test_restaurant->delete($cuisine_id);
 
             //Assert
             $this->assertEquals([], Restaurant::getAll());
