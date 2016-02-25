@@ -5,7 +5,7 @@
 
     $app = new Silex\Application();
 
-    // $app['debug'] = true;
+    $app['debug'] = true;
 
     $server = 'mysql:host=localhost;dbname=restaurants';
     $username = 'root';
