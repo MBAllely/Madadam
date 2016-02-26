@@ -9,7 +9,7 @@
         {{ review.getRating }}
     </p>
 
-    <form action="/restaurant/{{ restaurant.getId }}/review/{{ review.getId }}/edit" method="post">
+    <form action="/restaurant/{{ review.getRestaurantId }}/review/{{ review.getId }}/update" method="post">
       <input name="_method" type="hidden" value="patch">
 
       <label for="description">Edit Description:</label>
@@ -25,6 +25,8 @@
       </select>
       <button type="submit">Update</button>
     </form>
+
+
     <form action="/restaurants/{{ restaurant.getId }}/delete" method="post">
         <input name="_method" type="hidden" value="delete">
         <button type="submit" name="button">Delete restaurant</button>

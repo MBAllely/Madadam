@@ -133,6 +133,25 @@
        ));
     });
 
+    $app->patch("/restaurant/{restaurant_id}/review/{id}/update", function($restaurant_id, $id) use ($app) {
+
+        $new_description = $_POST['description'];
+        $new_rating = $_POST['rating'];
+        $review = Review::find($id);
+        $review->updateReview($new_description, $new_rating);
+
+        $restaurant_id = $review->getRestaurantId();
+        $restaurant = Restaurant::find($restaurant_id);
+        $cuisine_id = $restaurant->getCuisineId();
+        $cuisine = Cuisine::find($cuisine_id);
+        return $app['twig']->render('cuisines.html.twig',
+        array(
+            'cuisine' => $cuisine,
+            'restaurants' => $cuisine->getRestaurants(),
+            'reviews' => $restaurant->getReviews()
+        ));
+    });
+
     $app->patch("/restaurants/{id}/name", function($id) use ($app) {
         $new_name = $_POST['name'];
         $restaurant = Restaurant::find($id);
