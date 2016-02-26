@@ -31,13 +31,19 @@
                     <h4>Price Range: {{ restaurant.getPriceRange }}</h4>
                     <h4>Phone: {{ restaurant.getPhone }}</h4>
                     <h4>Reviews<h4>
-                        <ul>{% for review in reviews %}
-                            <li>
+                        {% for review in reviews %}
+                        <ul>
+
+                                {% if review.getRestaurantId == restaurant.getId %}
+                                <li>
                                 <p>{{ review.getDescription }}</p>
                                 <p>Rating: <em>{{ review.getRating }}</em></p>
-                            </li>
+                                </li>
+                                {% endif %}
+
+                        </ul>
                         {% endfor %}
-                    </ul>
+
                     <form action="/restaurants/{{ restaurant.getId }}/edit" method="get">
                         <button type="submit" name="button">Edit restaurant</button>
                     </form>

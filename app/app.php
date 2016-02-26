@@ -68,9 +68,9 @@
             $review = Review::find($id);
             var_dump($review);
             $review->deleteOneReview();
-            return $app['twig']->render('restaurant_review_edit.html.twig',
+            return $app['twig']->render('restaurant_review.html.twig',
             array(
-                'review' => $review,
+                'reviews' => $review,
                 'restaurant' => $restaurant
             ));
     });
