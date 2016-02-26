@@ -31,6 +31,7 @@
                     <h4>Price Range: {{ restaurant.getPriceRange }}</h4>
                     <h4>Phone: {{ restaurant.getPhone }}</h4>
                     <h4>Reviews<h4>
+                    {% if reviews == true %}
                         {% for review in reviews %}
                         <ul>
 
@@ -43,6 +44,8 @@
 
                         </ul>
                         {% endfor %}
+                    {% endif %}
+
 
                     <form action="/restaurants/{{ restaurant.getId }}/edit" method="get">
                         <button type="submit" name="button">Edit restaurant</button>
